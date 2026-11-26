@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keahlian Utama | Misbahul Anam Sidiq</title>
+    
+    <!-- Font Inter & Playfair -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,700;1,600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        crimson: {
+                            50: '#fff1f2',
+                            100: '#ffe4e6',
+                            200: '#fecdd3',
+                            300: '#fda4af',
+                            400: '#fb7185',
+                            500: '#f43f5e',
+                            600: '#e11d48',
+                            700: '#be123c',
+                            800: '#9f1239',
+                            900: '#881337',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(225, 29, 72, 0.12);
+        }
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(225, 29, 72, 0.1);
+        }
+        .glow-bright {
+            box-shadow: 0 20px 40px -15px rgba(225, 29, 72, 0.12);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-crimson-500 selection:text-white min-h-screen pt-28 pb-16 px-6 relative overflow-x-hidden flex flex-col justify-between items-center">
+
+    <!-- Ambient Background Glow -->
+    <div class="fixed -top-40 -left-40 w-[600px] h-[600px] bg-rose-200/50 rounded-full blur-[140px] pointer-events-none z-0"></div>
+    <div class="fixed top-1/3 -right-40 w-[500px] h-[500px] bg-crimson-100/60 rounded-full blur-[140px] pointer-events-none z-0"></div>
+    <div class="fixed -bottom-40 left-1/3 w-[550px] h-[550px] bg-amber-100/50 rounded-full blur-[150px] pointer-events-none z-0"></div>
+
+    <!-- NAVBAR RESPONSIF (DESKTOP & MOBILE) -->
+    <header class="fixed top-0 left-0 right-0 z-50 glass-nav">
+        <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
+            
+            <!-- Logo / Branding -->
+            <a href="index.html" class="flex items-center gap-2 group">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-crimson-600 to-rose-500 text-white flex items-center justify-center font-black text-lg shadow-md group-hover:scale-105 transition-transform">
+                    M
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-extrabold text-slate-900 text-sm tracking-tight leading-none">Misbahul Anam</span>
+                    <span class="text-[10px] text-slate-500 font-medium">Portofolio</span>
+                </div>
+            </a>
+
+            <!-- Navigasi Desktop -->
+            <nav class="hidden md:flex items-center gap-1 bg-slate-100/70 p-1.5 rounded-full border border-slate-200/60">
+                <a href="index.html" class="px-4 py-2 text-xs font-semibold text-slate-700 hover:text-crimson-600 rounded-full hover:bg-white transition">Beranda</a>
+                <a href="skill.html" class="px-4 py-2 text-xs font-semibold text-crimson-700 bg-white rounded-full shadow-sm">Skill</a>
+                <a href="aktivitas.html" class="px-4 py-2 text-xs font-semibold text-slate-700 hover:text-crimson-600 rounded-full hover:bg-white transition">Aktivitas</a>
+                <a href="sertifikat.html" class="px-4 py-2 text-xs font-semibold text-slate-700 hover:text-crimson-600 rounded-full hover:bg-white transition">Sertifikat</a>
+                <a href="proyek.html" class="px-4 py-2 text-xs font-semibold text-slate-700 hover:text-crimson-600 rounded-full hover:bg-white transition">Project</a>
+                <a href="kontak.html" class="px-4 py-2 text-xs font-semibold text-slate-700 hover:text-crimson-600 rounded-full hover:bg-white transition">Kontak</a>
+            </nav>
+
+            <!-- Tombol Action & Mobile Menu Toggle -->
+            <div class="flex items-center gap-3">
+                <a href="mailto:misbahulanamsidiq5@gmail.com" class="text-xs font-semibold bg-crimson-600 hover:bg-crimson-700 text-white px-5 py-2.5 rounded-full transition shadow-lg shadow-crimson-600/20 flex items-center gap-2">
+                    <i class="fa-solid fa-envelope text-xs"></i>
+                    <span>Hubungi Saya</span>
+                </a>
+
+                <button id="mobile-menu-btn" class="md:hidden w-10 h-10 rounded-xl bg-slate-100 border border-slate-200 text-slate-700 flex items-center justify-center hover:bg-rose-50 hover:text-crimson-600 transition" aria-label="Toggle Menu">
+                    <i id="menu-icon" class="fa-solid fa-bars text-lg"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Menu Mobile Overlay -->
+        <div id="mobile-menu" class="hidden md:hidden border-t border-slate-200/60 bg-white/95 backdrop-blur-lg px-6 py-4 space-y-2 shadow-xl">
+            <a href="index.html" class="block px-4 py-2.5 rounded-xl text-sm font-semibold text-slate-700 hover:bg-rose-50 hover:text-crimson-600 transition">Beranda</a>
+            <a href="skill.html" class="block px-4 py-2.5 rounded-xl text-sm font-bold text-crimson-600 bg-rose-50 border border-rose-100 transition">Skill</a>
+            <a href="aktivitas.html" class="block px-4 py-2.5 rounded-xl text-sm font-semibold text-slate-700 hover:bg-rose-50 hover:text-crimson-600 transition">Aktivitas</a>
+            <a href="sertifikat.html" class="block px-4 py-2.5 rounded-xl text-sm font-semibold text-slate-700 hover:bg-rose-50 hover:text-crimson-600 transition">Sertifikat</a>
+            <a href="proyek.html" class="block px-4 py-2.5 rounded-xl text-sm font-semibold text-slate-700 hover:bg-rose-50 hover:text-crimson-600 transition">Project</a>
+            <a href="kontak.html" class="block px-4 py-2.5 rounded-xl text-sm font-semibold text-slate-700 hover:bg-rose-50 hover:text-crimson-600 transition">Kontak</a>
+        </div>
+    </header>
+
+    <!-- KONTEN UTAMA KEAHLIAN -->
+    <main class="max-w-4xl w-full mx-auto relative z-10 space-y-8">
+        
+        <!-- Header Section -->
+        <div class="text-center space-y-3">
+            <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-rose-100/80 border border-rose-200 text-crimson-700 text-xs font-semibold tracking-wide uppercase shadow-sm">
+                <i class="fa-solid fa-layer-group text-crimson-600"></i> Capabilities
+            </span>
+            <h1 class="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">
+                Keahlian &amp; <span class="bg-gradient-to-r from-crimson-600 to-rose-500 bg-clip-text text-transparent">Kemampuan Utama</span>
+            </h1>
+            <p class="text-slate-500 text-sm max-w-md mx-auto">
+                Kombinasi latar belakang Infrastruktur Jaringan, Frontend &amp; Web Development, Desain Visual, serta Operasional IT Event Olahraga.
+            </p>
+        </div>
+
+        <!-- Grid Cards Keahlian -->
+        <div class="grid md:grid-cols-2 gap-6">
+
+            <!-- Card 1: Infrastruktur & Jaringan -->
+            <div class="glass-card rounded-3xl p-6 sm:p-8 glow-bright border border-rose-100 space-y-5">
+                <div class="flex items-center gap-4 border-b border-slate-200/80 pb-4">
+                    <div class="w-12 h-12 rounded-2xl bg-rose-100 text-crimson-600 flex items-center justify-center text-xl font-bold flex-shrink-0">
+                        <i class="fa-solid fa-network-wired"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-lg font-bold text-slate-900">Infrastruktur &amp; Jaringan</h2>
+                        <p class="text-xs text-slate-500">Teknik Komputer &amp; Jaringan (SMK YPPD)</p>
+                    </div>
+                </div>
+
+                <div class="space-y-4">
+                    <div class="space-y-1.5">
+                        <div class="flex justify-between text-xs font-bold">
+                            <span class="text-slate-800">MikroTik RouterOS &amp; Routing</span>
+                            <span class="text-crimson-600">85%</span>
+                        </div>
+                        <div class="w-full h-2 bg-slate-200/80 rounded-full overflow-hidden">
+                            <div class="h-full bg-gradient-to-r from-crimson-500 to-rose-500 rounded-full" style="width: 85%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-1.5">
+                        <div class="flex justify-between text-xs font-bold">
+                            <span class="text-slate-800">Cisco Packet Tracer / Switching</span>
+                            <span class="text-crimson-600">80%</span>
+                        </div>
+                        <div class="w-full h-2 bg-slate-200/80 rounded-full overflow-hidden">
+                            <div class="h-full bg-gradient-to-r from-crimson-500 to-rose-500 rounded-full" style="width: 80%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-1.5">
+                        <div class="flex justify-between text-xs font-bold">
+                            <span class="text-slate-800">Hardware &amp; Linux Server Configuration</span>
+                            <span class="text-crimson-600">75%</span>
+                        </div>
+                        <div class="w-full h-2 bg-slate-200/80 rounded-full overflow-hidden">
+                            <div class="h-full bg-gradient-to-r from-crimson-500 to-rose-500 rounded-full" style="width: 75%;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex flex-wrap gap-2 pt-2">
+                    <span class="px-3 py-1 bg-white border border-slate-200 text-slate-600 text-[11px] font-semibold rounded-lg shadow-sm">TCP/IP</span>
+                    <span class="px-3 py-1 bg-white border border-slate-200 text-slate-600 text-[11px] font-semibold rounded-lg shadow-sm">LAN/WAN</span>
+                    <span class="px-3 py-1 bg-white border border-slate-200 text-slate-600 text-[11px] font-semibold rounded-lg shadow-sm">Subnetting</span>
+                    <span class="px-3 py-1 bg-white border border-slate-200 text-slate-600 text-[11px] font-semibold rounded-lg shadow-sm">Debian/Ubuntu</span>
+                </div>
+            </div>
+
+            <!-- Card 2: Software & Web Development -->
+            <div class="glass-card rounded-3xl p-6 sm:p-8 glow-bright border border-rose-100 space-y-5">
+                <div class="flex items-center gap-4 border-b border-slate-200/80 pb-4">
+                    <div class="w-12 h-12 rounded-2xl bg-amber-100 text-amber-600 flex items-center justify-center text-xl font-bold flex-shrink-0">
+                        <i class="fa-solid fa-code"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-lg font-bold text-slate-900">Pengembangan Web &amp; Software</h2>
+                        <p class="text-xs text-slate-500">Teknik Informatika S1 (STT NF)</p>
+                    </div>
+                </div>
+
+                <div class="space-y-4">
+                    <div class="space-y-1.5">
+                        <div class="flex justify-between text-xs font-bold">
+                            <span class="text-slate-800">HTML5, CSS3 &amp; Tailwind CSS</span>
+                            <span class="text-crimson-600">85%</span>
+                        </div>
+                        <div class="w-full h-2 bg-slate-200/80 rounded-full overflow-hidden">
+                            <div class="h-full bg-gradient-to-r from-crimson-500 to-rose-500 rounded-full" style="width: 85%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-1.5">
+                        <div class="flex justify-between text-xs font-bold">
+                            <span class="text-slate-800">Node.js &amp; Express / JavaScript</span>
+                            <span class="text-crimson-600">80%</span>
+                        </div>
+                        <div class="w-full h-2 bg-slate-200/80 rounded-full overflow-hidden">
+                            <div class="h-full bg-gradient-to-r from-crimson-500 to-rose-500 rounded-full" style="width: 80%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-1.5">
+                        <div class="flex justify-between text-xs font-bold">
+                            <span class="text-slate-800">Database (MySQL / Basis Data)</span>
+                            <span class="text-crimson-600">75%</span>
+                        </div>
+                        <div class="w-full h-2 bg-slate-200/80 rounded-full overflow-hidden">
+                            <div class="h-full bg-gradient-to-r from-crimson-500 to-rose-500 rounded-full" style="width: 75%;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex flex-wrap gap-2 pt-2">
+                    <span class="px-3 py-1 bg-white border border-slate-200 text-slate-600 text-[11px] font-semibold rounded-lg shadow-sm">Responsive Design</span>
+                    <span class="px-3 py-1 bg-white border border-slate-200 text-slate-600 text-[11px] font-semibold rounded-lg shadow-sm">Git &amp; GitHub</span>
+                    <span class="px-3 py-1 bg-white border border-slate-200 text-slate-600 text-[11px] font-semibold rounded-lg shadow-sm">RESTful API</span>
+                    <span class="px-3 py-1 bg-white border border-slate-200 text-slate-700 text-[11px] font-semibold rounded-lg shadow-sm">VS Code</span>
+                </div>
+            </div>
+
+            <!-- Card 3: Desain Visual & Pengeditan Foto -->
+            <div class="glass-card rounded-3xl p-6 sm:p-8 glow-bright border border-rose-100 space-y-5">
+                <div class="flex items-center gap-4 border-b border-slate-200/80 pb-4">
+                    <div class="w-12 h-12 rounded-2xl bg-rose-100 text-crimson-600 flex items-center justify-center text-xl font-bold flex-shrink-0">
+                        <i class="fa-solid fa-camera-retro"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-lg font-bold text-slate-900">Desain Visual &amp; Pengeditan Foto</h2>
+                        <p class="text-xs text-slate-500">Kreativitas Visual, Prototyping UI &amp; Post-Processing</p>
+                    </div>
+                </div>
+
+                <div class="space-y-4">
+                    <div class="space-y-1.5">
+                        <div class="flex justify-between text-xs font-bold">
+                            <span class="text-slate-800">UI/UX Prototyping (Figma)</span>
+                            <span class="text-crimson-600">85%</span>
+                        </div>
+                        <div class="w-full h-2 bg-slate-200/80 rounded-full overflow-hidden">
+                            <div class="h-full bg-gradient-to-r from-crimson-500 to-rose-500 rounded-full" style="width: 85%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-1.5">
+                        <div class="flex justify-between text-xs font-bold">
+                            <span class="text-slate-800">Adobe Photoshop &amp; Lightroom</span>
+                            <span class="text-crimson-600">80%</span>
+                        </div>
+                        <div class="w-full h-2 bg-slate-200/80 rounded-full overflow-hidden">
+                            <div class="h-full bg-gradient-to-r from-crimson-500 to-rose-500 rounded-full" style="width: 80%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-1.5">
+                        <div class="flex justify-between text-xs font-bold">
+                            <span class="text-slate-800">Fotografi Produk &amp; Asset Layout</span>
+                            <span class="text-crimson-600">75%</span>
+                        </div>
+                        <div class="w-full h-2 bg-slate-200/80 rounded-full overflow-hidden">
+                            <div class="h-full bg-gradient-to-r from-crimson-500 to-rose-500 rounded-full" style="width: 75%;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex flex-wrap gap-2 pt-2">
+                    <span class="px-3 py-1 bg-white border border-slate-200 text-slate-600 text-[11px] font-semibold rounded-lg shadow-sm">Figma UI/UX</span>
+                    <span class="px-3 py-1 bg-white border border-slate-200 text-slate-600 text-[11px] font-semibold rounded-lg shadow-sm">Adobe Photoshop</span>
+                    <span class="px-3 py-1 bg-white border border-slate-200 text-slate-600 text-[11px] font-semibold rounded-lg shadow-sm">Lightroom</span>
+                    <span class="px-3 py-1 bg-white border border-slate-200 text-slate-600 text-[11px] font-semibold rounded-lg shadow-sm">Color Correction</span>
+                </div>
+            </div>
+
+            <!-- Card 4: Operator IT Event & Olahraga (Basket 3x3 & 5x5) -->
+            <div class="glass-card rounded-3xl p-6 sm:p-8 glow-bright border border-rose-100 space-y-5">
+                <div class="flex items-center gap-4 border-b border-slate-200/80 pb-4">
+                    <div class="w-12 h-12 rounded-2xl bg-amber-100 text-amber-600 flex items-center justify-center text-xl font-bold flex-shrink-0">
+                        <i class="fa-solid fa-basketball"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-lg font-bold text-slate-900">Operator IT Event &amp; Olahraga</h2>
+                        <p class="text-xs text-slate-500">Basket 3x3 &amp; 5x5 • PORPROV Jabar 2026</p>
+                    </div>
+                </div>
+
+                <div class="space-y-4">
+                    <div class="space-y-1.5">
+                        <div class="flex justify-between text-xs font-bold">
+                            <span class="text-slate-800">Operasional Skor &amp; Statistik Pertandingan</span>
+                            <span class="text-crimson-600">85%</span>
+                        </div>
+                        <div class="w-full h-2 bg-slate-200/80 rounded-full overflow-hidden">
+                            <div class="h-full bg-gradient-to-r from-crimson-500 to-rose-500 rounded-full" style="width: 85%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-1.5">
+                        <div class="flex justify-between text-xs font-bold">
+                            <span class="text-slate-800">Sinkronisasi Display &amp; Output Venue</span>
+                            <span class="text-crimson-600">80%</span>
+                        </div>
+                        <div class="w-full h-2 bg-slate-200/80 rounded-full overflow-hidden">
+                            <div class="h-full bg-gradient-to-r from-crimson-500 to-rose-500 rounded-full" style="width: 80%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-1.5">
+                        <div class="flex justify-between text-xs font-bold">
+                            <span class="text-slate-800">Troubleshooting &amp; Dukungan Teknis Lapangan</span>
+                            <span class="text-crimson-600">80%</span>
+                        </div>
+                        <div class="w-full h-2 bg-slate-200/80 rounded-full overflow-hidden">
+                            <div class="h-full bg-gradient-to-r from-crimson-500 to-rose-500 rounded-full" style="width: 80%;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex flex-wrap gap-2 pt-2">
+                    <span class="px-3 py-1 bg-white border border-slate-200 text-slate-600 text-[11px] font-semibold rounded-lg shadow-sm">Basket 3x3 &amp; 5x5</span>
+                    <span class="px-3 py-1 bg-white border border-slate-200 text-slate-600 text-[11px] font-semibold rounded-lg shadow-sm">PORPROV Jabar 2026</span>
+                    <span class="px-3 py-1 bg-white border border-slate-200 text-slate-600 text-[11px] font-semibold rounded-lg shadow-sm">Live Scoring</span>
+                    <span class="px-3 py-1 bg-white border border-slate-200 text-slate-600 text-[11px] font-semibold rounded-lg shadow-sm">Event IT Support</span>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="w-full py-8 px-6 border-t border-slate-200/80 bg-white relative z-10 text-xs text-slate-500 mt-16">
+        <div class="max-w-6xl mx-auto text-center">
+            <p>&copy; 2026 <span class="text-crimson-600 font-semibold">Misbahul Anam Sidiq</span>. Created By MISBAHUL ANAM SIDIQ. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Script Toggling Mobile Menu -->
+    <script>
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        const icon = document.getElementById('menu-icon');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+            if (menu.classList.contains('hidden')) {
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            } else {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-xmark');
+            }
+        });
+    </script>
+</body>
+</html>
